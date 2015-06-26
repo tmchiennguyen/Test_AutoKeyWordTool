@@ -22,6 +22,6 @@ public class SetupTest {
     @AfterMethod
     public void tearDown(){
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-//        driver.quit();
+        driver.quit();
     }
 }

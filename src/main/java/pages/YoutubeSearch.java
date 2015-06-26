@@ -1,9 +1,9 @@
 package pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
-
-import java.util.concurrent.TimeUnit;
+import org.openqa.selenium.WebElement;
 
 import static support.Helpers.*;
 
@@ -25,5 +25,10 @@ public class YoutubeSearch {
     }
     public boolean Enter_SearchYouTube(WebDriver driver){
         return Enter_ToSearch(driver, tbx_KeyWord, KeySearch);
+    }
+    public void Delete_SendKeys(WebDriver driver){
+        WebElement el=find_element(driver, tbx_KeyWord);
+        el.sendKeys(Keys.chord(Keys.CONTROL, "a"));
+        el.sendKeys(Keys.DELETE);
     }
 }

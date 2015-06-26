@@ -46,11 +46,4 @@ public class HomePage {
         find_element(driver, btn_AppStore).click();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     }
-
-
-
-
-
-
-
 }

@@ -1,7 +1,6 @@
 package testcase;
 
 import Utils.SetupTest;
-import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import pages.*;

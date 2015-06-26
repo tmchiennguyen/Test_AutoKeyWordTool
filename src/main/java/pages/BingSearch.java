@@ -23,4 +23,9 @@ public class BingSearch {
     public boolean Enter_SearchBing(WebDriver driver){
         return Enter_ToSearch(driver, tbx_KeyWord, KeySearch);
     }
+    public void Delete_SendKeys(WebDriver driver){
+        WebElement el=find_element(driver, tbx_KeyWord);
+        el.sendKeys(Keys.chord(Keys.CONTROL, "a"));
+        el.sendKeys(Keys.DELETE);
+    }
 }

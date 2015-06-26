@@ -7,6 +7,8 @@ import pages.GoogleSearch;
 import pages.HomePage;
 import pages.TableResult;
 
+import java.util.concurrent.TimeUnit;
+
 /**
  * Created by nancy.nguyen on 6/26/2015.
  */
@@ -28,11 +30,18 @@ public class TestGoogleSearch extends SetupTest {
         homePage.Goto_GoogleSearch(driver);
 
         GoogleSearch googleSearch=new GoogleSearch();
-        Assert.assertEquals(googleSearch.Enter_SearchGoogle(driver), true);
-
         TableResult tableResult=new TableResult();
+
+        Assert.assertEquals(googleSearch.Enter_SearchGoogle(driver), true);
+        Assert.assertEquals(tableResult.Load_TableResult(driver), true);
+
+        googleSearch.Delete_SendKeys(driver);
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+
+        Assert.assertEquals(googleSearch.Click_SearchGoogle(driver), true);
         Assert.assertEquals(tableResult.Load_TableResult(driver), true);
     }
+
     @Test
     public void test_SortResult(){
         HomePage homePage=new HomePage();
@@ -40,9 +49,9 @@ public class TestGoogleSearch extends SetupTest {
         homePage.Goto_GoogleSearch(driver);
 
         GoogleSearch googleSearch=new GoogleSearch();
-        Assert.assertEquals(googleSearch.Enter_SearchGoogle(driver), true);
-
         TableResult tableResult=new TableResult();
+
+        Assert.assertEquals(googleSearch.Enter_SearchGoogle(driver), true);
         Assert.assertEquals(tableResult.Load_TableResult(driver), true);
 
         tableResult.Sort_ascend(driver, 1);
@@ -55,11 +64,13 @@ public class TestGoogleSearch extends SetupTest {
         homePage.Goto_GoogleSearch(driver);
 
         GoogleSearch googleSearch=new GoogleSearch();
+//        googleSearch.Select_Combobox(driver);
         Assert.assertEquals(googleSearch.Enter_SearchGoogle(driver), true);
 
         TableResult tableResult=new TableResult();
         Assert.assertEquals(tableResult.Load_TableResult(driver), true);
 
+        // --- Print results
         tableResult.Get_SelectedResult(driver);
     }
 
